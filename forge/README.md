@@ -27,23 +27,19 @@ Your codebase → /forge:init → Complete SDLC instance → Self-enhancing flyw
 
 ### Register the marketplace
 
-If you haven't used any `agentic-skills` plugins before, register the marketplace first. In Claude Code, open settings and add to `extraKnownMarketplaces`:
+If you haven't used any `agentic-skills` plugins before, register the marketplace first. Add this to your Claude Code settings (`~/.claude/settings.json`):
 
 ```json
 {
-  "agentic-skills": {
-    "source": {
-      "source": "github",
-      "repo": "Entelligentsia/agentic-skills"
+  "extraKnownMarketplaces": {
+    "agentic-skills": {
+      "source": {
+        "source": "github",
+        "repo": "Entelligentsia/agentic-skills"
+      }
     }
   }
 }
-```
-
-Or add it via the CLI:
-
-```
-/plugin marketplace add agentic-skills --github Entelligentsia/agentic-skills
 ```
 
 ### Install the plugin
