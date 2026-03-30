@@ -11,18 +11,12 @@ When working with Three.js, Claude Code starts with general programming knowledg
 - Performance optimization tips
 - Integration patterns between different Three.js systems
 
-## Installation
+## Installation (Claude Code)
 
-Clone this repository into your project or copy the `.claude/skills` directory:
-
-```bash
-git clone https://github.com/pinkforest/threejs-playground.git
 ```
-
-Or add as a submodule:
-
-```bash
-git submodule add https://github.com/pinkforest/threejs-playground.git
+/plugin marketplace add Entelligentsia/agentic-skills
+/plugin install threejs-skills@agentic-skills
+/reload-plugins
 ```
 
 ## Skills Included
