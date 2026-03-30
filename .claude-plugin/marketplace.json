@@ -15,6 +15,11 @@
       "name": "threejs-skills",
       "description": "10 skills for Three.js 3D development",
       "source": "./threejs-skills"
+    },
+    {
+      "name": "forge",
+      "description": "Self-enhancing AI software development lifecycle — generates project-specific SDLC instances",
+      "source": "./forge"
     }
   ]
 }

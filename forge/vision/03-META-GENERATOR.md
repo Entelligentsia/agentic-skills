@@ -181,7 +181,7 @@ And produces a project-specific artifact. The meta-definition includes a `## Gen
 
 ```
 meta-engineer.md          ─┐
-                            ├─ LLM generates → .agent/workflows/engineer_plan_task.md
+                            ├─ LLM generates → .forge/workflows/engineer_plan_task.md
 discovery context          ─┤                   (references Django, pytest, Workspace entity...)
                             │
 knowledge base (generated) ─┘
@@ -191,4 +191,4 @@ The generation is **one-shot per component**. After init, the generated files ar
 
 ---
 
-**Next**: [04-INIT-FLOW.md](04-INIT-FLOW.md) — The 9 phases of `/forge init`
+**Next**: [04-INIT-FLOW.md](04-INIT-FLOW.md) — The 9 phases of `/forge:init`

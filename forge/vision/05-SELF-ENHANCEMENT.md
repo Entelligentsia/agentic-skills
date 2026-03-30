@@ -169,7 +169,7 @@ These fields enable:
 
 ## Knowledge Base Health Monitor
 
-A `/forge health` command (or part of the collator) assesses knowledge base currency:
+A `/forge:health` command (or part of the collator) assesses knowledge base currency:
 
 | Check | What It Detects |
 |-------|----------------|
@@ -187,7 +187,7 @@ The generated workflows and templates are version-controlled project files. They
 
 1. **Continuous writeback** — small updates during every task
 2. **Retrospective improvements** — the retrospective can propose edits to workflow files themselves
-3. **On-demand regeneration** — `/forge regenerate` re-runs the generation phases using the **current** knowledge base (enriched by N sprints of writeback), producing workflows that are much richer than Day 1's
+3. **On-demand regeneration** — `/forge:regenerate` re-runs the generation phases using the **current** knowledge base (enriched by N sprints of writeback), producing workflows that are much richer than Day 1's
 
 Sprint 1's generated Supervisor says: "Check @login_required on APIViews."
 Sprint 10's regenerated Supervisor says: "Check @login_required on APIViews. Verify Celery tasks use shared_task with bind=True. Confirm Stripe webhook signature verification. Ensure date fields use UTC storage. Check API responses follow the envelope format."

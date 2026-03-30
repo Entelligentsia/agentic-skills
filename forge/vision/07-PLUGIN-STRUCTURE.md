@@ -8,9 +8,16 @@ What ships in the Forge package and how it's organised.
 
 ```
 forge/
-  plugin.json                          Package metadata
+  .claude-plugin/
+    plugin.json                        Package metadata (manifest)
   sdlc-config.schema.json              JSON Schema for project configuration
   README.md                            Installation and quick start
+
+  commands/                            ── FORGE COMMANDS (user-invoked) ──
+    init.md                            /forge:init — bootstrap a project
+    regenerate.md                      /forge:regenerate — re-generate from enriched knowledge base
+    update-tools.md                    /forge:update-tools — apply updated tool specs
+    health.md                          /forge:health — knowledge base currency report
 
   meta/                                ── THE CORE IP ──
     personas/                          Agent role definitions
@@ -92,34 +99,57 @@ forge/
 
 ## File Categories
 
+### Forge Commands (`commands/`)
+
+User-invoked slash commands, namespaced under `forge:`. These are the only interface between the user and the plugin. Each command loads the relevant orchestration from `init/` and reads from `meta/` as needed during execution.
+
+| Command | Purpose |
+|---------|---------|
+| `/forge:init` | Run the 9-phase bootstrap on the current project |
+| `/forge:regenerate` | Re-generate workflows/templates from the enriched knowledge base |
+| `/forge:update-tools` | Apply updated tool specs, show diff, prompt before overwriting |
+| `/forge:health` | Assess knowledge base currency and coverage |
+
+- **Invoked by**: the user, explicitly
+- **Modified by**: Forge maintainers to improve UX or orchestration entry points
+
 ### Meta-Definitions (`meta/`)
 
 These are the core intellectual property of Forge. They define **what** the SDLC does — the roles, algorithms, document structures, and data models — without specifying any project-specific details.
 
-- **Read by**: the generation prompts during `/forge init`
+- **Read by**: `/forge:init` and `/forge:regenerate` during execution (via Read tool)
 - **Modified by**: Forge maintainers when the SDLC process evolves
 - **Never modified by**: end-user projects
 
 ### Init Prompts (`init/`)
 
-These are the orchestration logic for `/forge init`. They tell the LLM how to scan a project and how to use the meta-definitions + discovery results to generate project-specific artifacts.
+These are the orchestration logic for `/forge:init`. They tell the LLM how to scan a project and how to use the meta-definitions + discovery results to generate project-specific artifacts.
 
-- **Read by**: the LLM during `/forge init`
+- **Read by**: the LLM during `/forge:init` (via Read tool)
 - **Modified by**: Forge maintainers to improve discovery accuracy or generation quality
 - **Never modified by**: end-user projects
 
 ### Generated Artifacts (in the user's project)
 
-Everything that `/forge init` produces lives in the user's project repo, not in the plugin. These are first-class project files:
+Everything that `/forge:init` produces lives in the user's project repo, not in the plugin. These are first-class project files:
 
 ```
 User's project/
-  sdlc-config.json                     ← generated, user reviews
-  engineering/                         ← generated knowledge base, user reviews and corrects
-  .agent/workflows/                    ← generated workflows, project-specific
-  .claude/commands/                    ← generated commands, project-specific
-  ai-sdlc/templates/                   ← generated templates, project-specific
-  engineering/tools/                   ← generated tools, in project's language
+  .forge/
+    config.json                        ← generated, user reviews
+    store/                             ← SDLC database (sprints, tasks, bugs, events)
+    workflows/                         ← generated workflows, project-specific
+    templates/                         ← generated templates, project-specific
+  engineering/                         ← knowledge base, user reviews and corrects
+    architecture/
+    business-domain/
+    stack-checklist.md
+    MASTER_INDEX.md
+    sprints/                           ← task work artifacts (PLAN.md, PROGRESS.md, etc.)
+    bugs/                              ← bug work artifacts
+    tools/                             ← generated tools, team-owned
+  .claude/
+    commands/                          ← generated commands, project-specific
 ```
 
 - **Read by**: agents during normal SDLC operation
@@ -145,26 +175,40 @@ User's project/
 ### From the Agentic Skills Marketplace
 
 ```bash
-# Install the Forge plugin
+# Install the Forge plugin (user scope — available in all projects)
 /plugin install forge@agentic-skills
-
-# Bootstrap into your project
-/forge init
 ```
 
-### Manual (from Git)
+This installs Forge globally, making the `/forge:*` commands available in any project directory.
+
+### Bootstrap a project
+
+Navigate to your project and run:
 
 ```bash
-# Clone the skills repo
-git clone https://github.com/Entelligentsia/agentic-skills.git ~/.claude/plugins/agentic-skills
-
-# Run init
-/forge init
+/forge:init
 ```
 
 ### After Installation
 
-Forge adds one command: `/forge init`. After init completes, the generated commands (`/engineer`, `/supervisor`, `/implement`, `/sprint-plan`, etc.) are available in the project.
+Forge adds four namespaced commands: `/forge:init`, `/forge:regenerate`, `/forge:update-tools`, `/forge:health`.
+
+After `/forge:init` completes, the **generated** project commands are available as non-namespaced standalone commands (short names, no plugin prefix):
+
+```
+/engineer      /supervisor      /implement
+/sprint-plan   /fix-bug         /collate
+/retrospective /run-task        /run-sprint
+```
+
+These live in `.claude/commands/` in the project repo. They're first-class project files — not Forge commands.
+
+### Development / Testing
+
+```bash
+# Load the plugin locally without installing
+claude --plugin-dir ./forge
+```
 
 ---
 
@@ -172,21 +216,22 @@ Forge adds one command: `/forge init`. After init completes, the generated comma
 
 ### Plugin Version
 
-`plugin.json` tracks the Forge version:
+`.claude-plugin/plugin.json` tracks the Forge version:
 
 ```json
 {
   "name": "forge",
   "version": "1.0.0",
   "description": "Self-enhancing AI software development lifecycle",
-  "author": "Entelligentsia",
-  "commands": ["forge"]
+  "author": {
+    "name": "Entelligentsia"
+  }
 }
 ```
 
 ### Config Version
 
-`sdlc-config.json` includes a version field:
+`.forge/config.json` includes a version field:
 
 ```json
 {
@@ -206,8 +251,8 @@ The store schema is versioned in the schema docs. If Forge adds new fields to th
 Generated workflows, templates, and tools are **not auto-updated** when the plugin updates. The user controls when to regenerate:
 
 ```bash
-/forge update-tools     # regenerate tools from latest specs
-/forge regenerate       # regenerate workflows from meta-definitions + current knowledge base
+/forge:update-tools     # regenerate tools from latest specs
+/forge:regenerate       # regenerate workflows from meta-definitions + current knowledge base
 ```
 
 Both commands show diffs and ask for confirmation before overwriting.
@@ -218,11 +263,11 @@ Both commands show diffs and ask for confirmation before overwriting.
 
 Forge is different from the other skills in the `agentic-skills` marketplace:
 
-| Package | Type | How It Works |
-|---------|------|-------------|
-| `meta-webxr-skills` | Reference skills | Loaded into context when triggered by keywords |
-| `threejs-skills` | Reference skills | Loaded into context when triggered by keywords |
-| **`forge`** | **Meta-generator** | Generates project-specific artifacts at init time |
+| Package | Plugin Type | Commands | How It Works |
+|---------|------------|----------|-------------|
+| `meta-webxr-skills` | Skills (`skills/`) | None | Model-invoked via Skill tool when keywords match |
+| `threejs-skills` | Skills (`skills/`) | None | Model-invoked via Skill tool when keywords match |
+| **`forge`** | **Commands (`commands/`)** | `/forge:init`, `/forge:regenerate`, `/forge:update-tools`, `/forge:health` | User-invoked; reads plugin files at runtime to bootstrap or update a project |
 
 Forge's generated workflows can coexist with other skills. A project might use `threejs-skills` for 3D development guidance AND Forge for its engineering lifecycle.
 

@@ -23,7 +23,7 @@ Distill WalkInto's 28-sprint experience into abstract, project-agnostic meta-def
 
 ### Track B — Init Engine (the bootstrap system)
 
-Build the `/forge init` orchestration and its component prompts.
+Build the `/forge:init` orchestration and its component prompts.
 
 | Step | Work | Input | Output | Effort |
 |------|------|-------|--------|--------|
@@ -105,19 +105,19 @@ All files in `meta/` exist and are reviewed. The meta-definitions are the core I
 
 ### M2 — Init Engine Complete
 
-`/forge init` can be run and produces output. The generation quality may not be perfect yet — that's what validation is for.
+`/forge:init` can be run and produces output. The generation quality may not be perfect yet — that's what validation is for.
 
-**Deliverable**: `init/` fully wired. `/forge init` runs end-to-end on a test project.
+**Deliverable**: `init/` fully wired. `/forge:init` runs end-to-end on a test project.
 
 ### M3 — First Successful Init
 
-`/forge init` on a real project produces a working SDLC instance. The developer can review the knowledge base, run `/sprint-plan`, and execute a task through the full pipeline.
+`/forge:init` on a real project produces a working SDLC instance. The developer can review the knowledge base, run `/sprint-plan`, and execute a task through the full pipeline.
 
 **Deliverable**: one project (likely WalkInto) running on Forge-generated workflows.
 
 ### M4 — Cross-Stack Validation
 
-`/forge init` works on at least 3 different stacks (Node.js, Python, Go). Generated tools execute correctly. Generated workflows reference the correct stack-specific commands.
+`/forge:init` works on at least 3 different stacks (Node.js, Python, Go). Generated tools execute correctly. Generated workflows reference the correct stack-specific commands.
 
 **Deliverable**: validation reports from 3 projects.
 
@@ -133,7 +133,7 @@ A project runs 3 sprints on Forge. The stack checklist grows. The knowledge base
 
 | # | Criterion | Measurement |
 |---|-----------|-------------|
-| 1 | `/forge init` → working SDLC in under 1 hour | Time from command to first `/sprint-plan` |
+| 1 | `/forge:init` → working SDLC in under 1 hour | Time from command to first `/sprint-plan` |
 | 2 | Generated workflows reference the project's actual stack, entities, commands | Manual review — no generic placeholders |
 | 3 | Generated tools work in Python, Node.js, and Go | Tool executes and produces correct output |
 | 4 | Smoke test catches structural issues and self-corrects | Init report shows corrections |
@@ -152,7 +152,7 @@ A project runs 3 sprints on Forge. The stack checklist grows. The knowledge base
 | Discovery accuracy too low for complex projects | Medium | Medium | Conservative confidence ratings. `[?]` markers. Human review step is mandatory, not optional. |
 | Generated tools have bugs in untested languages | Medium | Medium | LLM fallback for all tools. Generated tools include basic self-tests. |
 | Context window limits during init (many files to scan) | Low | Medium | Discovery prompts scope their scans. Don't try to read every file — sample. |
-| Teams customise generated workflows then can't update | Low | Low | `/forge regenerate` shows diffs. Never auto-overwrite. |
+| Teams customise generated workflows then can't update | Low | Low | `/forge:regenerate` shows diffs. Never auto-overwrite. |
 | Knowledge writeback produces noise | Medium | Medium | Start conservative (high-confidence only). Retrospective reviews and prunes. |
 
 ---
@@ -161,7 +161,7 @@ A project runs 3 sprints on Forge. The stack checklist grows. The knowledge base
 
 Ideas for future versions (not in scope for initial release):
 
-- **`/forge health` dashboard** — knowledge base currency and coverage metrics
+- **`/forge:health` dashboard** — knowledge base currency and coverage metrics
 - **Multi-repo support** — monorepo with multiple services, each with its own SDLC instance
 - **Team mode** — role assignment to team members (Alice is Engineer, Bob is Supervisor)
 - **Integration with external trackers** — sync sprint/task state with Linear, Jira, GitHub Projects

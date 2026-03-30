@@ -34,13 +34,13 @@ Forge eliminates the bootstrapping problem. It:
 ## How It Works (30-Second Version)
 
 ```
-Install Forge → Run /forge init → Review generated knowledge base → Run /sprint-plan → Work
+Install Forge → Run /forge:init → Review generated knowledge base → Run /sprint-plan → Work
 ```
 
 Under the hood:
 
 ```
-/forge init
+/forge:init
   ├─ Scans codebase (Glob, Grep, Read)
   ├─ Generates knowledge base (architecture, entities, review checklist)
   ├─ Generates agent personas (Engineer, Supervisor, Architect — project-specific)

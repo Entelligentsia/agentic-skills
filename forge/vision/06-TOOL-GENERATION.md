@@ -14,7 +14,7 @@ Shipping these as Node.js scripts (as WalkInto does) creates a runtime dependenc
 
 ```
 Plugin ships:     tool-specs/collate.spec.md     (language-agnostic algorithm)
-/forge init:      reads sdlc-config.json          (project language, paths, prefix)
+/forge:init:      reads .forge/config.json         (project language, paths, prefix)
 LLM generates:    engineering/tools/collate.py    (project-native implementation)
 ```
 
@@ -35,9 +35,9 @@ A tool spec defines **what** the tool does, not **how** in any particular langua
 Regenerate markdown views from the JSON store. Deterministic — no AI needed.
 
 ## Inputs
-- sdlc-config.json — project prefix, paths, description
-- .store/sprints/*.json, .store/tasks/*.json, .store/bugs/*.json
-- .store/events/{SPRINT_ID}/*.json
+- `.forge/config.json` — project prefix, paths, description
+- `.forge/store/sprints/*.json`, `.forge/store/tasks/*.json`, `.forge/store/bugs/*.json`
+- `.forge/store/events/{SPRINT_ID}/*.json`
 - Existing MASTER_INDEX.md (to preserve static sections)
 
 ## Outputs
@@ -54,7 +54,7 @@ Regenerate markdown views from the JSON store. Deterministic — no AI needed.
 - Exit 0 on success, 1 on validation error
 
 ## Algorithm
-1. Read sdlc-config.json for prefix, paths, project description
+1. Read `.forge/config.json` for prefix, paths, project description
 2. Validate store: tasks/ has JSON files, required fields present
 3. Load all sprint JSON, sort by sprint number ascending
 4. Load all task JSON, group by sprintId
@@ -114,7 +114,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent.parent
-CONFIG = json.loads((ROOT / 'sdlc-config.json').read_text())
+CONFIG = json.loads((ROOT / '.forge' / 'config.json').read_text())
 STORE = ROOT / CONFIG['paths']['store']
 # ...
 ```
@@ -128,7 +128,7 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.resolve(__dirname, '../..');
-const CONFIG = JSON.parse(fs.readFileSync(path.join(ROOT, 'sdlc-config.json'), 'utf8'));
+const CONFIG = JSON.parse(fs.readFileSync(path.join(ROOT, '.forge', 'config.json'), 'utf8'));
 const STORE = path.join(ROOT, CONFIG.paths.store);
 // ...
 ```
@@ -161,7 +161,7 @@ func main() {
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
-CONFIG="$ROOT/sdlc-config.json"
+CONFIG="$ROOT/.forge/config.json"
 STORE="$ROOT/$(jq -r '.paths.store' "$CONFIG")"
 # ...
 ```
@@ -173,9 +173,9 @@ STORE="$ROOT/$(jq -r '.paths.store' "$CONFIG")"
 ### Day 1: Generated
 
 ```
-/forge init Phase 8
+/forge:init Phase 8
   → reads collate.spec.md
-  → reads sdlc-config.json (language: python)
+  → reads .forge/config.json (language: python)
   → generates engineering/tools/collate.py
   → records in config: "collate": "python engineering/tools/collate.py"
 ```
@@ -193,7 +193,7 @@ The tool is a project file. The team can:
 When Forge ships an updated `collate.spec.md` (e.g., adding a new output file):
 
 ```
-/forge update-tools
+/forge:update-tools
   → reads current collate.spec.md (from plugin)
   → reads previous collate.spec.md (cached during last init/update)
   → diffs the two → shows user what changed
@@ -212,7 +212,7 @@ PREFERRED: Run the generated collation tool:
   python engineering/tools/collate.py
 
 FALLBACK: If the tool is unavailable, follow the manual collation workflow
-in .agent/workflows/collator_agent.md.
+in `.forge/workflows/collator_agent.md`.
 ```
 
 The LLM fallback is slower (30-60s vs <1s) and non-deterministic, but it works with zero dependencies.

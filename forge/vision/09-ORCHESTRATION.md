@@ -103,7 +103,7 @@ phase:
 
 ### Pipeline Customisation
 
-Teams customise the pipeline through `sdlc-config.json` or by editing the generated orchestrator directly:
+Teams customise the pipeline through `.forge/config.json` or by editing the generated orchestrator directly:
 
 **Lightweight pipeline** (solo developer, fast iteration):
 
@@ -454,7 +454,7 @@ Defines:
 - Event emission format
 
 **Generation instructions** tell the LLM to:
-- Fill in concrete test/build/lint commands from sdlc-config.json
+- Fill in concrete test/build/lint commands from `.forge/config.json`
 - Reference project-specific architecture sub-docs by name
 - Include stack-specific gate checks (e.g., Django migration check)
 - Wire in the generated atomic workflows by their exact filenames
@@ -475,7 +475,7 @@ Defines:
 **Generation instructions** tell the LLM to:
 - Use the project's branch naming convention
 - Include the project's worktree setup commands (npm install, build, etc.)
-- Set the base branch from sdlc-config.json
+- Set the base branch from `.forge/config.json`
 - Include project-specific post-merge verification (run tests after merge)
 - Default to sequential mode with parallel available via flag
 
