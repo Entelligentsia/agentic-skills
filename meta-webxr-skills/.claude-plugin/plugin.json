@@ -1,0 +1,11 @@
+{
+  "name": "meta-webxr-skills",
+  "version": "1.0.0",
+  "description": "8 Claude Code skills for Meta Quest PWA XR engineering — session lifecycle, rendering, input, passthrough, anchors, layers, RATK, and PWA/Quest packaging",
+  "author": {
+    "name": "Entelligentsia",
+    "url": "https://github.com/Entelligentsia"
+  },
+  "repository": "https://github.com/Entelligentsia/agentic-skills",
+  "keywords": ["webxr", "meta-quest", "xr", "vr", "ar", "three.js", "pwa"]
+}

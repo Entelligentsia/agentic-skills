@@ -1,0 +1,15 @@
+{
+  "name": "agentic-skills",
+  "description": "Agentic skill packs for Claude Code and other LLM agent systems",
+  "owner": {
+    "name": "Entelligentsia",
+    "url": "https://github.com/Entelligentsia"
+  },
+  "plugins": [
+    {
+      "name": "meta-webxr-skills",
+      "description": "8 skills for Meta Quest PWA XR engineering",
+      "source": "./meta-webxr-skills"
+    }
+  ]
+}
