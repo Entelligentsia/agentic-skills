@@ -6,18 +6,33 @@ Skill packs for Claude Code and other LLM agent systems, published by [Entellige
 
 | Package | Type | Description |
 |---------|------|-------------|
-| [forge](./forge/) | Meta-generator | Self-enhancing AI software development lifecycle — scans your codebase, generates project-specific workflows, personas, templates, and tools |
+| [forge](https://github.com/Entelligentsia/forge) | Meta-generator | Self-enhancing AI software development lifecycle — scans your codebase, generates project-specific workflows, personas, templates, and tools |
 | [meta-webxr-skills](./meta-webxr-skills/) | Reference skills | Meta Quest PWA XR engineering (8 skills) |
 | [threejs-skills](./threejs-skills/) | Reference skills | Three.js 3D development (10 skills) |
 
 ## Installation (Claude Code)
 
+Clone this repo (with submodules) and copy the desired skill pack into your project's `.claude/skills/` directory:
+
 ```bash
-/plugin marketplace add Entelligentsia/agentic-skills
-/plugin install forge@agentic-skills
-/plugin install meta-webxr-skills@agentic-skills
-/plugin install threejs-skills@agentic-skills
+git clone --recurse-submodules https://github.com/Entelligentsia/agentic-skills
 ```
+
+### meta-webxr-skills
+
+```bash
+cp -r agentic-skills/meta-webxr-skills ~/.claude/skills/
+```
+
+### threejs-skills
+
+```bash
+cp -r agentic-skills/threejs-skills ~/.claude/skills/
+```
+
+### Forge
+
+Forge has its own repository. See [Entelligentsia/forge](https://github.com/Entelligentsia/forge) for installation instructions.
 
 ## Forge
 
@@ -29,7 +44,7 @@ Forge is different from the reference skill packages. Instead of loading knowled
 /engineer ACME-S01-T01   # Plan a task (generated command)
 ```
 
-See [forge/README.md](./forge/README.md) for the full vision and design.
+See [Entelligentsia/forge](https://github.com/Entelligentsia/forge) for the full vision and design.
 
 ## Skills Index
 
