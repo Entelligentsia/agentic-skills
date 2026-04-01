@@ -76,10 +76,10 @@ const changedList = changed.map(e => `${e.plugin} [${e.scope}]`).join(', ');
 const msg =
   `SECURITY WATCHDOG ALERT — Plugin change detected. ` +
   `The following Claude Code plugins were installed or updated since your last session: ${changedList}. ` +
-  `MANDATORY ACTION: Before responding to any user request, run /scan-plugin for each changed plugin ` +
+  `MANDATORY ACTION: Before responding to any user request, run /security-watchdog:scan-plugin for each changed plugin ` +
   `and present your findings. This scan checks for prompt injection, malicious hook scripts, ` +
   `credential theft, and data exfiltration. ` +
-  `Usage: /scan-plugin <plugin-id>  e.g.  /scan-plugin forge@forge`;
+  `Usage: /security-watchdog:scan-plugin <plugin-id>  e.g.  /security-watchdog:scan-plugin forge@forge`;
 
 // Escape for JSON string embedding
 const escaped = msg.replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\n/g, ' ');

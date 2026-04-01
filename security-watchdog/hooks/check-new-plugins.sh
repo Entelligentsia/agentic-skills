@@ -56,8 +56,8 @@ printf '%s\n' "$CURRENT" > "$SNAPSHOT_FILE"
 [ -n "$CHANGED_LIST" ] || exit 0
 
 # Build the advisory injected into Claude's session context.
-# The double-space before each /scan-plugin call is intentional for readability.
-MSG="SECURITY WATCHDOG ALERT — Plugin change detected. The following Claude Code plugins were installed or updated since your last session: ${CHANGED_LIST}. MANDATORY ACTION: Before responding to any user request, run /scan-plugin for each changed plugin and present your findings. This scan checks for prompt injection, malicious hook scripts, credential theft, and data exfiltration. Usage: /scan-plugin <plugin-id>  e.g.  /scan-plugin forge@forge"
+# The double-space before each /security-watchdog:scan-plugin call is intentional for readability.
+MSG="SECURITY WATCHDOG ALERT — Plugin change detected. The following Claude Code plugins were installed or updated since your last session: ${CHANGED_LIST}. MANDATORY ACTION: Before responding to any user request, run /security-watchdog:scan-plugin for each changed plugin and present your findings. This scan checks for prompt injection, malicious hook scripts, credential theft, and data exfiltration. Usage: /security-watchdog:scan-plugin <plugin-id>  e.g.  /security-watchdog:scan-plugin forge@forge"
 
 ESCAPED=$(printf '%s' "$MSG" | sed 's/\\/\\\\/g; s/"/\\"/g' | tr '\n' ' ')
 printf '{"additionalContext":"%s"}\n' "$ESCAPED"

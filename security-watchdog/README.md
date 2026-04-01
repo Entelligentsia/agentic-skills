@@ -27,9 +27,9 @@ New/updated plugin detected
                     ↓
 Injects into session context:
   "SECURITY WATCHDOG ALERT: forge@forge was installed.
-   Run /scan-plugin forge@forge before proceeding."
+   Run /security-watchdog:scan-plugin forge@forge before proceeding."
                     ↓
-Claude runs /scan-plugin, reads all plugin files,
+Claude runs /security-watchdog:scan-plugin, reads all plugin files,
 applies security checks, and reports findings
 ```
 
@@ -74,15 +74,15 @@ The snapshot is updated on detection — each change event fires the alert exact
 
 ### Automatic (via SessionStart hook)
 
-After installing any plugin, start a new Claude Code session. If the watchdog detects a change, Claude will automatically run `/scan-plugin` before responding to your first request.
+After installing any plugin, start a new Claude Code session. If the watchdog detects a change, Claude will automatically run `/security-watchdog:scan-plugin` before responding to your first request.
 
 ### Manual
 
 Scan any installed plugin at any time:
 
 ```
-/scan-plugin forge@forge
-/scan-plugin frontend-design@claude-plugins-official
+/security-watchdog:scan-plugin forge@forge
+/security-watchdog:scan-plugin frontend-design@claude-plugins-official
 ```
 
 Use the plugin ID as it appears in `~/.claude/plugins/installed_plugins.json`.
@@ -113,7 +113,7 @@ security-watchdog/
     hooks.json               — registers SessionStart hook
     check-new-plugins.js     — snapshot diff and context injection (Node.js — works on Linux, macOS, Windows)
   commands/
-    scan-plugin.md           — /scan-plugin <plugin-id> command
+    scan-plugin.md           — /security-watchdog:scan-plugin <plugin-id> command
   skills/
     plugin-security/
       SKILL.md               — threat model, attack taxonomy, severity guide
