@@ -1,0 +1,11 @@
+{
+  "name": "llm-patterns",
+  "version": "1.0.0",
+  "description": "10 Claude Code skills for production LLM integration — structured generation, RAG, guardrails, prompt engineering, tool use, agent loop, graceful degradation, evaluation harness, and tool synthesis",
+  "author": {
+    "name": "Entelligentsia",
+    "url": "https://github.com/Entelligentsia"
+  },
+  "repository": "https://github.com/Entelligentsia/agentic-skills",
+  "keywords": ["llm", "ai", "rag", "agent", "prompt-engineering", "structured-generation", "guardrails", "evaluation", "claude"]
+}
