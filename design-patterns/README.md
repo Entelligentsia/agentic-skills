@@ -1,5 +1,7 @@
 # design-patterns
 
+<img src="./assets/banner.png" alt="design-patterns — GoF, enterprise, and DDD patterns for Claude Code" width="100%" />
+
 Canonical software design pattern skills for Claude Code agents, grounded in authoritative sources: Gang of Four's *Design Patterns* (1994), Martin Fowler's *Patterns of Enterprise Application Architecture* (2002), and Eric Evans' *Domain-Driven Design* (2003).
 
 These skills are designed to **pull code toward proven patterns** rather than reinforce whatever conventions happen to exist in a codebase. Each skill is organised around the **pain that warrants the pattern**, not the pattern name — so agents start from friction, not from speculation.

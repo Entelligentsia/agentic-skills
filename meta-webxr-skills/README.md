@@ -1,5 +1,7 @@
 # Meta WebXR Skills for Claude Code
 
+<img src="./assets/banner.png" alt="meta-webxr-skills — WebXR PWA skills for Meta Quest" width="100%" />
+
 Skills for building WebXR PWA experiences targeting Meta Quest devices. Covers the full stack from PWA installability to MR passthrough, spatial anchors, and the WebXR Layers API.
 
 Modelled on [threejs-skills](../threejs-skills/). Sourced from:

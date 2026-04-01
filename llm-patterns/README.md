@@ -1,5 +1,7 @@
 # llm-patterns
 
+<img src="./assets/banner.png" alt="llm-patterns — production LLM integration patterns for Claude Code" width="100%" />
+
 Design patterns for using LLMs as engineering components — not chat interfaces, but decision-making, data-processing, and logic-executing building blocks in production software systems.
 
 These skills address the recurring problems of LLM integration: non-deterministic outputs, hallucination, prompt fragility, cost unpredictability, and production reliability. Each pattern is organised around the **pain it removes**, grounded in proven practices from production AI systems.

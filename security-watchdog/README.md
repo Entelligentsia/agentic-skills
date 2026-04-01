@@ -1,5 +1,7 @@
 # security-watchdog
 
+<img src="./assets/banner.png" alt="security-watchdog — automatic Claude Code plugin scanner" width="100%" />
+
 > Automatic security scanner for Claude Code plugins — detects new or updated extensions at session start and scans them for prompt injection, malicious hook scripts, and data exfiltration.
 
 ## The Problem

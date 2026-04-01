@@ -1,5 +1,7 @@
 # Three.js Skills for Claude Code
 
+<img src="./assets/banner.png" alt="threejs-skills — Three.js 3D development skills for Claude Code" width="100%" />
+
 A curated collection of Three.js skill files that provide Claude Code with foundational knowledge for creating 3D elements and interactive experiences.
 
 ## Purpose

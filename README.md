@@ -1,5 +1,7 @@
 # Skillforge
 
+<img src="./assets/skillforge-banner.png" alt="Skillforge — skill packs for Claude Code" width="100%" />
+
 Skill packs for Claude Code and other LLM agent systems, published by [Entelligentsia](https://github.com/Entelligentsia).
 
 ## Available Packages
