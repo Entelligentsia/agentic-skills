@@ -54,7 +54,7 @@ See [Entelligentsia/forge](https://github.com/Entelligentsia/forge) for the full
 
 | Skill / Command | Purpose |
 |-----------------|---------|
-| `/scan-plugin <plugin-id>` | Scan any installed plugin for prompt injection, malicious hooks, and data exfiltration |
+| `/security-watchdog:scan-plugin <plugin-id>` | Scan any installed plugin for prompt injection, malicious hooks, and data exfiltration |
 | `plugin-security` | Threat model and heuristics reference — attack taxonomy, severity guide, detection patterns |
 
 Runs automatically via `SessionStart` hook: detects newly installed or updated plugins and prompts Claude to scan before your first request.
