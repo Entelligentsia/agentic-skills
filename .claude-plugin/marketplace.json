@@ -7,6 +7,21 @@
   },
   "plugins": [
     {
+      "name": "security-watchdog",
+      "description": "Auto-scans newly installed Claude Code plugins for prompt injection, malicious hook scripts, and data exfiltration",
+      "source": "./security-watchdog"
+    },
+    {
+      "name": "design-patterns",
+      "description": "10 skills covering all 23 GoF patterns plus enterprise and DDD patterns",
+      "source": "./design-patterns"
+    },
+    {
+      "name": "llm-patterns",
+      "description": "9 skills for LLM integration patterns — RAG, tool use, agents, guardrails, tool synthesis",
+      "source": "./llm-patterns"
+    },
+    {
       "name": "meta-webxr-skills",
       "description": "8 skills for Meta Quest PWA XR engineering",
       "source": "./meta-webxr-skills"
