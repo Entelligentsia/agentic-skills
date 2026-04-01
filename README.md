@@ -16,17 +16,17 @@ Skill packs for Claude Code and other LLM agent systems, published by [Entellige
 ## Installation (Claude Code)
 
 ```
-/plugin marketplace add Entelligentsia/agentic-skills
+/plugin marketplace add Entelligentsia/skillforge
 ```
 
 Then install whichever packs you need:
 
 ```
-/plugin install security-watchdog@agentic-skills
-/plugin install design-patterns@agentic-skills
-/plugin install llm-patterns@agentic-skills
-/plugin install threejs-skills@agentic-skills
-/plugin install meta-webxr-skills@agentic-skills
+/plugin install security-watchdog@skillforge
+/plugin install design-patterns@skillforge
+/plugin install llm-patterns@skillforge
+/plugin install threejs-skills@skillforge
+/plugin install meta-webxr-skills@skillforge
 /reload-plugins
 ```
 

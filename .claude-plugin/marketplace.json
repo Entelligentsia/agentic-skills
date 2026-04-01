@@ -1,6 +1,6 @@
 {
-  "name": "agentic-skills",
-  "description": "Agentic skill packs for Claude Code and other LLM agent systems",
+  "name": "skillforge",
+  "description": "Skill packs and plugins for Claude Code, published by Entelligentsia",
   "owner": {
     "name": "Entelligentsia",
     "url": "https://github.com/Entelligentsia"
