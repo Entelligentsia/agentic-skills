@@ -7,6 +7,7 @@ Skill packs for Claude Code and other LLM agent systems, published by [Entellige
 | Package | Type | Description |
 |---------|------|-------------|
 | [forge](https://github.com/Entelligentsia/forge) | Meta-generator | Self-enhancing AI software development lifecycle — scans your codebase, generates project-specific workflows, personas, templates, and tools |
+| [security-watchdog](./security-watchdog/) | Security plugin | Auto-scans newly installed/updated Claude Code plugins for prompt injection, malicious hook scripts, and data exfiltration |
 | [design-patterns](./design-patterns/) | Reference skills | Canonical software design patterns — all 23 GoF + enterprise/DDD patterns (10 skills) |
 | [llm-patterns](./llm-patterns/) | Reference skills | LLM integration patterns — RAG, tool use, agents, guardrails, tool synthesis (9 skills) |
 | [meta-webxr-skills](./meta-webxr-skills/) | Reference skills | Meta Quest PWA XR engineering (8 skills) |
@@ -21,6 +22,7 @@ Skill packs for Claude Code and other LLM agent systems, published by [Entellige
 Then install whichever packs you need:
 
 ```
+/plugin install security-watchdog@agentic-skills
 /plugin install design-patterns@agentic-skills
 /plugin install llm-patterns@agentic-skills
 /plugin install threejs-skills@agentic-skills
