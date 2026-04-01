@@ -14,8 +14,8 @@ When working with Three.js, Claude Code starts with general programming knowledg
 ## Installation (Claude Code)
 
 ```
-/plugin marketplace add Entelligentsia/agentic-skills
-/plugin install threejs-skills@agentic-skills
+/plugin marketplace add Entelligentsia/skillforge
+/plugin install threejs-skills@skillforge
 /reload-plugins
 ```
 

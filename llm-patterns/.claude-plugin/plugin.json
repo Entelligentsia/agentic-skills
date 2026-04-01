@@ -6,6 +6,6 @@
     "name": "Entelligentsia",
     "url": "https://github.com/Entelligentsia"
   },
-  "repository": "https://github.com/Entelligentsia/agentic-skills",
+  "repository": "https://github.com/Entelligentsia/skillforge",
   "keywords": ["llm", "ai", "rag", "agent", "prompt-engineering", "structured-generation", "guardrails", "evaluation", "claude"]
 }

@@ -1,4 +1,4 @@
-# Agentic Skills
+# Skillforge
 
 Skill packs for Claude Code and other LLM agent systems, published by [Entelligentsia](https://github.com/Entelligentsia).
 

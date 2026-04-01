@@ -6,7 +6,7 @@
     "name": "Entelligentsia",
     "url": "https://github.com/Entelligentsia"
   },
-  "repository": "https://github.com/Entelligentsia/agentic-skills",
+  "repository": "https://github.com/Entelligentsia/skillforge",
   "keywords": ["threejs", "three.js", "3d", "webgl", "graphics", "animation"],
   "acknowledgements": "Originally sourced from https://github.com/pinkforest/threejs-playground (MIT)"
 }

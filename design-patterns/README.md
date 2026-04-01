@@ -98,8 +98,8 @@ See [Maya's Case Study](docs/maya-case-study.md) — a walkthrough of reengineer
 ## Installation
 
 ```
-/plugin marketplace add Entelligentsia/agentic-skills
-/plugin install design-patterns@agentic-skills
+/plugin marketplace add Entelligentsia/skillforge
+/plugin install design-patterns@skillforge
 /reload-plugins
 ```
 

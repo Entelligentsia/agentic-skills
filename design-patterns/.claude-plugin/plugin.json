@@ -6,6 +6,6 @@
     "name": "Entelligentsia",
     "url": "https://github.com/Entelligentsia"
   },
-  "repository": "https://github.com/Entelligentsia/agentic-skills",
+  "repository": "https://github.com/Entelligentsia/skillforge",
   "keywords": ["design-patterns", "gof", "ddd", "cqrs", "domain-driven-design", "enterprise-patterns", "fowler", "evans"]
 }

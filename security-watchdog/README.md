@@ -63,8 +63,8 @@ The snapshot is updated on detection — each change event fires the alert exact
 ## Installation
 
 ```
-/plugin marketplace add Entelligentsia/agentic-skills
-/plugin install security-watchdog@agentic-skills
+/plugin marketplace add Entelligentsia/skillforge
+/plugin install security-watchdog@skillforge
 /reload-plugins
 ```
 

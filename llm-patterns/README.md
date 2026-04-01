@@ -82,8 +82,8 @@ See [Maya's Case Study](../design-patterns/docs/maya-case-study.md) — a walkth
 ## Installation
 
 ```
-/plugin marketplace add Entelligentsia/agentic-skills
-/plugin install llm-patterns@agentic-skills
+/plugin marketplace add Entelligentsia/skillforge
+/plugin install llm-patterns@skillforge
 /reload-plugins
 ```
 
