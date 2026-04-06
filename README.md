@@ -10,6 +10,7 @@ Skill packs for Claude Code and other LLM agent systems, published by [Entellige
 |---------|------|-------------|
 | [forge](https://github.com/Entelligentsia/forge) | Meta-generator | Self-enhancing AI software development lifecycle — scans your codebase, generates project-specific workflows, personas, templates, and tools |
 | [security-watchdog](./security-watchdog/) | Security plugin | Auto-scans newly installed/updated Claude Code plugins for prompt injection, malicious hook scripts, and data exfiltration |
+| [freshdesk-api](./freshdesk-api/) | API integration skill | Freshdesk helpdesk API — tickets, contacts, companies, knowledge base (Solutions), webhooks (1 skill) |
 | [design-patterns](./design-patterns/) | Reference skills | Canonical software design patterns — all 23 GoF + enterprise/DDD patterns (10 skills) |
 | [llm-patterns](./llm-patterns/) | Reference skills | LLM integration patterns — RAG, tool use, agents, guardrails, tool synthesis (9 skills) |
 | [meta-webxr-skills](./meta-webxr-skills/) | Reference skills | Meta Quest PWA XR engineering (8 skills) |
@@ -25,6 +26,7 @@ Then install whichever packs you need:
 
 ```
 /plugin install security-watchdog@skillforge
+/plugin install freshdesk-api@skillforge
 /plugin install design-patterns@skillforge
 /plugin install llm-patterns@skillforge
 /plugin install threejs-skills@skillforge
@@ -116,6 +118,14 @@ Runs automatically via `SessionStart` hook: detects newly installed or updated p
 | `threejs-shaders` | GLSL, ShaderMaterial, uniforms, custom effects |
 | `threejs-postprocessing` | EffectComposer, bloom, DOF, screen effects |
 | `threejs-interaction` | Raycasting, controls, mouse/touch input, object selection |
+
+### freshdesk-api
+
+| Skill | Trigger |
+|-------|---------|
+| `freshdesk-api` | Freshdesk API: tickets, contacts, companies, knowledge base articles, webhooks, automation |
+
+Five reference files cover the full API surface: tickets, contacts/companies, Solutions (knowledge base), webhooks/automation, and SDK examples.
 
 ## Acknowledgements
 

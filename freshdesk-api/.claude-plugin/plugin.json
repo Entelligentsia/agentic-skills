@@ -1,0 +1,13 @@
+{
+  "name": "freshdesk-api",
+  "version": "1.0.0",
+  "description": "Freshdesk helpdesk API skill — tickets, contacts, companies, knowledge base (Solutions), webhooks, and automation. Use when building Freshdesk integrations, extracting support data, managing help center articles, or automating support workflows.",
+  "license": "MIT",
+  "author": {
+    "name": "Entelligentsia",
+    "email": "hello@entelligentsia.in",
+    "url": "https://github.com/Entelligentsia"
+  },
+  "repository": "https://github.com/Entelligentsia/skillforge",
+  "keywords": ["freshdesk", "helpdesk", "crm", "support", "tickets", "knowledge-base", "api-integration"]
+}
