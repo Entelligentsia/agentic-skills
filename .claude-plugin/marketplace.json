@@ -12,6 +12,11 @@
       "source": "./security-watchdog"
     },
     {
+      "name": "freshdesk-api",
+      "description": "Freshdesk helpdesk API skill — tickets, contacts, companies, knowledge base (Solutions), webhooks, and automation",
+      "source": "./freshdesk-api"
+    },
+    {
       "name": "design-patterns",
       "description": "10 skills covering all 23 GoF patterns plus enterprise and DDD patterns",
       "source": "./design-patterns"
