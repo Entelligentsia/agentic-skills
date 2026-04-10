@@ -39,7 +39,12 @@
     {
       "name": "forge",
       "description": "Self-enhancing AI software development lifecycle — generates project-specific SDLC instances from meta-definitions",
-      "source": "./forge/forge"
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/Entelligentsia/forge.git",
+        "path": "forge",
+        "ref": "release"
+      }
     }
   ]
 }
