@@ -13,6 +13,7 @@ Skill packs for Claude Code and other LLM agent systems, published by [Entellige
 | [freshdesk-api](./freshdesk-api/) | API integration skill | Freshdesk helpdesk API — tickets, contacts, companies, knowledge base (Solutions), webhooks (1 skill) |
 | [design-patterns](./design-patterns/) | Reference skills | Canonical software design patterns — all 23 GoF + enterprise/DDD patterns (10 skills) |
 | [llm-patterns](./llm-patterns/) | Reference skills | LLM integration patterns — RAG, tool use, agents, guardrails, tool synthesis (9 skills) |
+| [harness-engineering](./harness-engineering/) | Reference skills | Agent harness components — memory/compaction, caching, sandboxing, permissions, telemetry, hooks, routing (13 skills) |
 | [meta-webxr-skills](./meta-webxr-skills/) | Reference skills | Meta Quest PWA XR engineering (8 skills) |
 | [threejs-skills](./threejs-skills/) | Reference skills | Three.js 3D development (10 skills) |
 
@@ -29,6 +30,7 @@ Then install whichever packs you need:
 /plugin install freshdesk-api@skillforge
 /plugin install design-patterns@skillforge
 /plugin install llm-patterns@skillforge
+/plugin install harness-engineering@skillforge
 /plugin install threejs-skills@skillforge
 /plugin install meta-webxr-skills@skillforge
 /reload-plugins
@@ -90,6 +92,24 @@ Runs automatically via `SessionStart` hook: detects newly installed or updated p
 | `graceful-degradation` | Model is down, slow, or over budget |
 | `evaluation-harness` | No way to measure quality or detect regressions |
 | `tool-synthesis` | LLM called repeatedly for tasks codifiable as deterministic tools |
+
+### harness-engineering
+
+| Skill | Concern |
+|-------|---------|
+| `memory-compaction` | Hot/warm/cold tiering; lossy compression that preserves load-bearing facts |
+| `session-persistence` | Append-only event log, idempotent replay, fork/branch semantics |
+| `prompt-caching` | Cache breakpoint placement, TTL, silent-regression traps |
+| `subagent-orchestration` | Fork vs fresh, briefing rules, isolation, result merge |
+| `tool-sandboxing` | Filesystem jail, egress allowlist, scoped credentials, safety vs security |
+| `permission-gates` | Risk classification, scope-bound consent, irreversibility detection |
+| `streaming-io` | Partial JSON parsing, mid-stream tool dispatch, cancellation |
+| `concurrency-control` | Conflict graphs, intent-order feed, partial-failure semantics |
+| `telemetry-tracing` | Span trees, cost attribution, replay from trace |
+| `hook-system` | Event taxonomy, blocking vs observation, failure isolation |
+| `workspace-state` | Read-before-edit invariant, external-mutation detection |
+| `model-routing` | Capability/cost routing, distinct from graceful degradation |
+| `rate-limiting` | Token buckets per dimension, fair allocation, 429 with Retry-After |
 
 ### meta-webxr-skills
 
