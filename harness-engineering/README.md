@@ -30,3 +30,15 @@ All 13 skills filled. Each follows the `llm-patterns/agent-loop` template — pa
 - `harness-engineering` → *how* the runtime hosts it (memory, sandbox, hooks, telemetry, ...)
 
 Some overlap is intentional: `model-routing` extends `graceful-degradation`; `telemetry-tracing` is distinct from `evaluation-harness` (ops vs quality).
+
+---
+
+## Installation
+
+```
+/plugin marketplace add Entelligentsia/skillforge
+/plugin install harness-engineering@skillforge
+/reload-plugins
+```
+
+After install, skills surface under the `harness-engineering:*` namespace (e.g., `harness-engineering:prompt-caching`).

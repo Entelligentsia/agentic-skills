@@ -89,6 +89,16 @@ See [Maya's Case Study](../design-patterns/docs/maya-case-study.md) — a walkth
 /reload-plugins
 ```
 
+After install, skills surface under the `llm-patterns:*` namespace (e.g., `llm-patterns:agent-loop`).
+
+### Companion plugin
+
+For the runtime/infrastructure layer that hosts these patterns (memory, caching, sandboxing, telemetry, hooks, ...), install [`harness-engineering`](../harness-engineering/README.md):
+
+```
+/plugin install harness-engineering@skillforge
+```
+
 ---
 
 ## Sources
