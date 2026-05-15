@@ -27,6 +27,11 @@
       "source": "./llm-patterns"
     },
     {
+      "name": "harness-engineering",
+      "description": "13 skills for agent harness components — memory/compaction, session persistence, prompt caching, subagent orchestration, sandboxing, permissions, streaming, concurrency, telemetry, hooks, workspace state, model routing, rate limiting",
+      "source": "./harness-engineering"
+    },
+    {
       "name": "meta-webxr-skills",
       "description": "8 skills for Meta Quest PWA XR engineering",
       "source": "./meta-webxr-skills"
