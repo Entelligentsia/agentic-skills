@@ -1,0 +1,499 @@
+/* doc-review overlay - injected into doc HTML */
+
+#dr-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 340px;
+    height: 100vh;
+    background: #ffffff;
+    border-left: 1px solid #e2e2e2;
+    box-shadow: -2px 0 12px rgba(0,0,0,0.08);
+    z-index: 999999;
+    display: flex;
+    flex-direction: column;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 13px;
+    color: #1a1a1a;
+}
+
+#dr-overlay.collapsed {
+    width: 36px;
+}
+#dr-overlay.collapsed .dr-main { display: none; }
+
+#dr-overlay .dr-header {
+    padding: 12px 14px;
+    border-bottom: 1px solid #e8e8e8;
+    background: #fafafa;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#dr-overlay .dr-header .dr-title {
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #444;
+}
+#dr-overlay .dr-toggle {
+    background: none;
+    border: 1px solid #ccc;
+    width: 22px;
+    height: 22px;
+    border-radius: 3px;
+    cursor: pointer;
+    color: #555;
+    line-height: 1;
+}
+#dr-overlay.collapsed .dr-toggle {
+    transform: rotate(180deg);
+}
+
+#dr-overlay .dr-meta {
+    padding: 8px 14px;
+    font-size: 11px;
+    color: #777;
+    border-bottom: 1px solid #f0f0f0;
+}
+#dr-overlay .dr-meta .dr-doc {
+    font-weight: 500;
+    color: #333;
+}
+
+#dr-overlay .dr-actions {
+    padding: 10px 14px;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    gap: 8px;
+}
+#dr-overlay .dr-btn {
+    flex: 1;
+    padding: 6px 10px;
+    border: 1px solid #1a1a1a;
+    background: #1a1a1a;
+    color: #fff;
+    border-radius: 3px;
+    font-size: 12px;
+    cursor: pointer;
+}
+#dr-overlay .dr-btn.ghost {
+    background: #fff;
+    color: #1a1a1a;
+}
+#dr-overlay .dr-btn:hover { opacity: 0.85; }
+#dr-overlay .dr-btn.active { background: #e63946; border-color: #e63946; }
+
+#dr-overlay .dr-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 4px 0;
+}
+
+#dr-overlay .dr-empty {
+    padding: 30px 16px;
+    text-align: center;
+    color: #999;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+#dr-overlay .dr-card {
+    margin: 8px 14px;
+    padding: 10px 12px;
+    border: 1px solid #e8e8e8;
+    border-radius: 4px;
+    background: #fff;
+    position: relative;
+}
+#dr-overlay .dr-card.substantive { border-left: 3px solid #e63946; }
+#dr-overlay .dr-card.register { border-left: 3px solid #f4a261; }
+#dr-overlay .dr-card.typo { border-left: 3px solid #2a9d8f; }
+
+/* Status overlays */
+#dr-overlay .dr-card.status-applied {
+    opacity: 0.55;
+    background: #f4faf6;
+}
+#dr-overlay .dr-card.status-applied .dr-comment,
+#dr-overlay .dr-card.status-applied .dr-quote {
+    color: #555;
+}
+#dr-overlay .dr-card .dr-status-badge {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    padding: 2px 6px;
+    border-radius: 2px;
+    margin-left: 6px;
+    vertical-align: middle;
+}
+#dr-overlay .dr-card .dr-status-badge.applied {
+    background: #2a9d8f;
+    color: #fff;
+}
+#dr-overlay .dr-card .dr-status-badge.dismissed {
+    background: #888;
+    color: #fff;
+}
+#dr-overlay .dr-card .dr-status-badge.reopened {
+    background: #f4a261;
+    color: #fff;
+}
+#dr-overlay .dr-card .dr-applied-note {
+    margin-top: 6px;
+    padding: 4px 6px;
+    background: #eaf6f1;
+    border-left: 2px solid #2a9d8f;
+    font-size: 10.5px;
+    color: #1a4d44;
+    font-family: 'JetBrains Mono', monospace;
+    word-wrap: break-word;
+}
+#dr-overlay .dr-card.status-dismissed {
+    opacity: 0.45;
+    background: #fafafa;
+}
+#dr-overlay .dr-card.status-dismissed .dr-comment,
+#dr-overlay .dr-card.status-dismissed .dr-quote {
+    text-decoration: line-through;
+    color: #777;
+}
+
+/* Filter row */
+#dr-overlay .dr-filter {
+    padding: 6px 14px 8px;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: #666;
+}
+#dr-overlay .dr-filter label {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    user-select: none;
+}
+#dr-overlay .dr-filter input[type=checkbox] {
+    margin: 0;
+    cursor: pointer;
+}
+#dr-overlay .dr-filter .dr-counts {
+    margin-left: auto;
+    color: #999;
+    font-size: 10px;
+}
+
+#dr-overlay .dr-card .dr-anchor {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: #666;
+    margin-bottom: 4px;
+}
+#dr-overlay .dr-card .dr-quote {
+    font-style: italic;
+    color: #555;
+    background: #fff7d6;
+    padding: 2px 4px;
+    border-radius: 2px;
+    font-size: 12px;
+    display: inline-block;
+    margin: 2px 0 6px;
+    max-width: 100%;
+    overflow-wrap: break-word;
+}
+#dr-overlay .dr-card .dr-comment {
+    font-size: 12px;
+    color: #1a1a1a;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+#dr-overlay .dr-card .dr-suggested {
+    margin-top: 6px;
+    padding: 4px 6px;
+    background: #eef7ee;
+    border-left: 2px solid #2a9d8f;
+    font-size: 11.5px;
+    color: #1a1a1a;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+#dr-overlay .dr-card .dr-card-actions {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    display: flex;
+    gap: 2px;
+    align-items: center;
+}
+#dr-overlay .dr-card .dr-del,
+#dr-overlay .dr-card .dr-reopen {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #999;
+    font-size: 14px;
+    line-height: 1;
+    padding: 2px 4px;
+}
+#dr-overlay .dr-card .dr-reopen {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    font-weight: 600;
+    color: #f4a261;
+    border: 1px solid #f4a261;
+    border-radius: 2px;
+    padding: 2px 5px;
+}
+#dr-overlay .dr-card .dr-reopen:hover {
+    background: #f4a261;
+    color: #fff;
+}
+#dr-overlay .dr-card .dr-del:hover { color: #e63946; }
+
+/* Capture mode banner */
+#dr-capture-banner {
+    position: fixed;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1a1a1a;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 4px;
+    z-index: 999998;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+/* Capture form panel */
+#dr-form {
+    position: fixed;
+    bottom: 20px;
+    right: 360px;
+    width: 360px;
+    background: #fff;
+    border: 1px solid #d0d0d0;
+    border-radius: 6px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    z-index: 999999;
+    padding: 14px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+#dr-form h4 {
+    margin: 0 0 8px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #555;
+}
+#dr-form .dr-form-anchor {
+    font-size: 11px;
+    color: #555;
+    margin-bottom: 8px;
+    padding: 6px 8px;
+    background: #f5f5f5;
+    border-radius: 3px;
+}
+#dr-form .dr-form-anchor .dr-quote {
+    font-style: italic;
+    background: #fff7d6;
+    padding: 1px 3px;
+    border-radius: 2px;
+}
+#dr-form .dr-sev-row {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 8px;
+}
+#dr-form .dr-sev-row label {
+    flex: 1;
+    padding: 5px 8px;
+    border: 1px solid #d0d0d0;
+    border-radius: 3px;
+    text-align: center;
+    font-size: 11.5px;
+    cursor: pointer;
+    background: #fff;
+}
+#dr-form .dr-sev-row input[type=radio] { display: none; }
+#dr-form .dr-sev-row input[type=radio]:checked + span { font-weight: 600; }
+#dr-form .dr-sev-row label:has(input[value=substantive]:checked) { background: #fbeaec; border-color: #e63946; }
+#dr-form .dr-sev-row label:has(input[value=register]:checked) { background: #fcefe0; border-color: #f4a261; }
+#dr-form .dr-sev-row label:has(input[value=typo]:checked) { background: #e6f3f1; border-color: #2a9d8f; }
+#dr-form textarea {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #d0d0d0;
+    border-radius: 3px;
+    padding: 6px 8px;
+    font-family: inherit;
+    font-size: 12px;
+    resize: vertical;
+    margin-bottom: 6px;
+}
+#dr-form .dr-form-actions {
+    display: flex;
+    gap: 6px;
+    justify-content: flex-end;
+}
+#dr-form .dr-form-actions button {
+    padding: 6px 12px;
+    border-radius: 3px;
+    border: 1px solid #1a1a1a;
+    background: #1a1a1a;
+    color: #fff;
+    font-size: 12px;
+    cursor: pointer;
+}
+#dr-form .dr-form-actions button.cancel {
+    background: #fff;
+    color: #1a1a1a;
+}
+
+/* Anchored-text highlighting in the doc */
+.dr-anchor-mark {
+    background: #fff7d6;
+    border-bottom: 2px solid #f4a261;
+    cursor: pointer;
+}
+.dr-anchor-mark.substantive { border-bottom-color: #e63946; }
+.dr-anchor-mark.register { border-bottom-color: #f4a261; }
+.dr-anchor-mark.typo { border-bottom-color: #2a9d8f; }
+
+body.dr-capture-mode {
+    cursor: crosshair !important;
+}
+body.dr-capture-mode .dr-anchor-mark {
+    cursor: crosshair !important;
+}
+
+/* Push doc content left so sidebar doesn't cover it */
+body.dr-overlay-active {
+    margin-right: 340px !important;
+}
+body.dr-overlay-active.dr-overlay-collapsed {
+    margin-right: 36px !important;
+}
+
+/* Pagination: hide all pages except the current one */
+body.dr-paginated .page {
+    display: none !important;
+}
+body.dr-paginated .page.dr-current-page {
+    display: block !important;
+}
+
+/* Page navbar (top-left of viewport) */
+#dr-nav {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 999998;
+    background: #1a1a1a;
+    color: #fff;
+    border-radius: 4px;
+    padding: 4px 6px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+#dr-nav button {
+    background: #333;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 4px 8px;
+    cursor: pointer;
+    font-size: 12px;
+    line-height: 1;
+}
+#dr-nav button:hover { background: #444; }
+#dr-nav button:disabled { opacity: 0.4; cursor: not-allowed; }
+#dr-nav .dr-page-input {
+    width: 36px;
+    background: #fff;
+    color: #1a1a1a;
+    border: none;
+    border-radius: 3px;
+    padding: 3px 4px;
+    font-size: 12px;
+    text-align: center;
+}
+#dr-nav .dr-page-of {
+    color: #aaa;
+    padding: 0 4px;
+}
+#dr-nav .dr-page-label {
+    color: #ccc;
+    font-size: 11px;
+    padding-left: 6px;
+    border-left: 1px solid #444;
+    margin-left: 4px;
+    max-width: 220px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+#dr-nav .dr-mode-toggle {
+    margin-left: 8px;
+    padding-left: 8px;
+    border-left: 1px solid #444;
+    color: #ccc;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+}
+#dr-nav .dr-mode-toggle:hover { color: #fff; }
+
+/* Make comment cards jumpable */
+#dr-overlay .dr-card {
+    cursor: pointer;
+}
+#dr-overlay .dr-card .dr-del { cursor: pointer; }
+
+/* Generic severity classes (typo / edit / rewrite). The original substantive /
+   register / typo classes above are preserved for backward compatibility. */
+#dr-overlay .dr-card.edit { border-left: 3px solid #f4a261; }
+#dr-overlay .dr-card.rewrite { border-left: 3px solid #e63946; }
+#dr-form .dr-sev-row label:has(input[value=edit]:checked) { background: #fcefe0; border-color: #f4a261; }
+#dr-form .dr-sev-row label:has(input[value=rewrite]:checked) { background: #fbeaec; border-color: #e63946; }
+.dr-anchor-mark.edit { border-bottom-color: #f4a261; }
+.dr-anchor-mark.rewrite { border-bottom-color: #e63946; }
+
+/* Apply button + queued badge */
+#dr-overlay .dr-apply {
+    background: #2a9d8f; color: white; border: none; padding: 3px 8px;
+    border-radius: 3px; font-size: 11px; cursor: pointer; margin-right: 4px;
+}
+#dr-overlay .dr-apply:hover { background: #21847a; }
+#dr-overlay .dr-apply[disabled] { background: #888; cursor: default; }
+#dr-overlay .dr-queued-badge {
+    display: inline-block; margin-left: 6px; padding: 1px 5px;
+    background: #fff3cd; color: #856404; border-radius: 3px; font-size: 10px;
+}
+
+/* Project root chip in sidebar header */
+#dr-overlay .dr-root-chip {
+    display: inline-block; max-width: 240px; padding: 1px 6px;
+    font-size: 10px; color: #555; background: #eee; border-radius: 3px;
+    margin-left: 6px; overflow: hidden; text-overflow: ellipsis;
+    white-space: nowrap; direction: rtl;
+}
+
+/* Plain-doc mode: hide pagination, expand reading width */
+body.dr-plain #dr-nav { display: none !important; }
+body.dr-plain.dr-paginated .page { /* no-op; .page may not exist */ }

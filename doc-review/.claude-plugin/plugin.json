@@ -1,0 +1,13 @@
+{
+  "name": "doc-review",
+  "version": "0.2.0",
+  "description": "In-browser annotation overlay for HTML/Markdown/text documents with one-click apply driven by Claude Code",
+  "license": "MIT",
+  "author": {
+    "name": "Entelligentsia",
+    "email": "hello@entelligentsia.in",
+    "url": "https://github.com/Entelligentsia"
+  },
+  "repository": "https://github.com/Entelligentsia/skillforge",
+  "keywords": ["doc-review", "annotation", "review", "plugin"]
+}
