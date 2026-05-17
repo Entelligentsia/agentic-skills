@@ -2,7 +2,7 @@
 
 <img src="./assets/skillforge-banner.png" alt="Skillforge — skill packs for Claude Code" width="100%" />
 
-Skill packs for Claude Code and other LLM agent systems, published by [Entelligentsia](https://github.com/Entelligentsia).
+Skill packs for Claude Code and other LLM agent systems, published by [Entelligentsia](https://github.com/Entelligentsia) ([entelligentsia.in](https://entelligentsia.in)).
 
 ## Available Packages
 
@@ -11,6 +11,7 @@ Skill packs for Claude Code and other LLM agent systems, published by [Entellige
 | [forge](https://github.com/Entelligentsia/forge) | Meta-generator | Self-enhancing AI software development lifecycle — scans your codebase, generates project-specific workflows, personas, templates, and tools |
 | [security-watchdog](./security-watchdog/) | Security plugin | Auto-scans newly installed/updated Claude Code plugins for prompt injection, malicious hook scripts, and data exfiltration |
 | [freshdesk-api](./freshdesk-api/) | API integration skill | Freshdesk helpdesk API — tickets, contacts, companies, knowledge base (Solutions), webhooks (1 skill) |
+| [doc-review](./doc-review/) | Workflow plugin | In-browser document annotation overlay with Claude-driven apply — annotate HTML/MD/TXT in browser, click Apply, edits land in source (1 skill, 4 commands) |
 | [design-patterns](./design-patterns/) | Reference skills | Canonical software design patterns — all 23 GoF + enterprise/DDD patterns (10 skills) |
 | [llm-patterns](./llm-patterns/) | Reference skills | LLM integration patterns — RAG, tool use, agents, guardrails, tool synthesis (9 skills) |
 | [harness-engineering](./harness-engineering/) | Reference skills | Agent harness components — memory/compaction, caching, sandboxing, permissions, telemetry, hooks, routing (13 skills) |
@@ -28,6 +29,7 @@ Then install whichever packs you need:
 ```
 /plugin install security-watchdog@skillforge
 /plugin install freshdesk-api@skillforge
+/plugin install doc-review@skillforge
 /plugin install design-patterns@skillforge
 /plugin install llm-patterns@skillforge
 /plugin install harness-engineering@skillforge
@@ -146,6 +148,16 @@ Runs automatically via `SessionStart` hook: detects newly installed or updated p
 | `freshdesk-api` | Freshdesk API: tickets, contacts, companies, knowledge base articles, webhooks, automation |
 
 Five reference files cover the full API surface: tickets, contacts/companies, Solutions (knowledge base), webhooks/automation, and SDK examples.
+
+### doc-review
+
+| Command | Purpose |
+|---------|---------|
+| `/doc-review:review-doc <file>` | Start in-browser annotation overlay on HTML/MD/TXT; runs auto-apply loop |
+| `/doc-review:apply-review [<json>]` | Guided apply of pending review comments back into source |
+| `/doc-review:review-doc-stop` | Drop this session's references; servers exit when last ref drops |
+
+Multi-session aware: two sessions reviewing the same doc share one server. Apply button in browser queues edits; Claude applies within ~60s. Stores comments under `<project-root>/.doc-review/`.
 
 ## Acknowledgements
 

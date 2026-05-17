@@ -17,6 +17,11 @@
       "source": "./freshdesk-api"
     },
     {
+      "name": "doc-review",
+      "description": "In-browser annotation overlay for HTML/Markdown/text documents; click Apply in the browser to have Claude Code apply edits to source within ~60s",
+      "source": "./doc-review"
+    },
+    {
       "name": "design-patterns",
       "description": "10 skills covering all 23 GoF patterns plus enterprise and DDD patterns",
       "source": "./design-patterns"
@@ -48,7 +53,7 @@
         "source": "git-subdir",
         "url": "https://github.com/Entelligentsia/forge.git",
         "path": "forge",
-        "ref": "v0.43.16"
+        "ref": "v0.43.19"
       }
     }
   ]
